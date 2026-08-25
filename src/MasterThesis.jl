@@ -1,5 +1,6 @@
 module MasterThesis
 
-# Write your package code here.
+include("constants.jl")
+export RE
 
 end
