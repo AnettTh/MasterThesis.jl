@@ -50,10 +50,10 @@ model = AuroraModel(
 
 ## Define precipitating electron flux
 flux = InputFlux(
-    MaxwellianSpectrum(1e-2, 5e3),
-    SinusoidalFlickering(0.2),
+    FlatSpectrum(1e-3; E_min=5000),
+    SinusoidalFlickering(5.0),
     beams=1,
-    z_source=RE,
+    z_source= 6.5 * RE * 1e-3,
 )
 
 
@@ -65,8 +65,8 @@ sim = AuroraSimulation(
     flux,
     savedir;
     mode=TimeDependentMode(
-        duration=0.1,
-        dt=0.02,
+        duration=10,
+        dt=0.05,
         CFL_number=256,
         max_memory_gb=4.0,
     )
@@ -86,7 +86,7 @@ make_heating_rate_file(sim)        # electron heating rates
 make_psd_file(sim)                 # electron phase-space density f(E, θ) and F(v∥)
 
 
-## Make figures
+## Make model-figures
 figs = plot_model(model)
 
 #figs[:scattering]
@@ -95,3 +95,6 @@ figs = plot_model(model)
 #figs[:phase_functions]
 #figs[:energy_levels]
 #figs[:cross_sections]
+
+
+##
