@@ -2,6 +2,28 @@ using MasterThesis
 using AURORA
 using CairoMakie
 
+#===========================================================================================
+EVALUATION
+----------
+Ran for approximately 4 h.
+
+Input flux:
+- Spectrum: FlatSpectrum, IeE_tot=1e-3; E_min=5000
+- Modulation: SinusoidalFlickering, 5 Hz
+- Beams: 1
+- Source: L-shell 6.5
+
+Time:
+- Duration: 10 s
+- Δt: 0.05 s
+
+Comments:
+- Higher energy than used in the documentation combined with higher minimum energy, suspect
+that this resulted in only the first pitch-angle bin being populated.
+- Duration too long for this sinusoidal frequency (t = 10 s, f = 5 Hz), and with too poor
+resolution to zoom in on meaningful interval.
+===========================================================================================#
+
 ## Find or generate MSIS and IRI data files
 year = 2020
 month = 10
