@@ -7,11 +7,13 @@ authors = ["'AnettTh' <'anett.thomassen@uit.no'> and contributors"]
 AURORA = "4b0706e8-6e74-4116-ab4c-be5c58cc7d1d"
 CairoMakie = "13f3f980-e62b-5c42-98c6-ff1f3baf88f0"
 LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+NCDatasets = "85f8d34a-cbdd-5861-8df4-14fed0d494ab"
 
 [compat]
 AURORA = "0.8.0"
 CairoMakie = "0.15.13"
 LinearAlgebra = "1.12.0"
+NCDatasets = "0.14.15"
 julia = "1.10.10"
 
 [extras]
