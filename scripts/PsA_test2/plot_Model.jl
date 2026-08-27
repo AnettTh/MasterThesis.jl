@@ -50,10 +50,10 @@ model = AuroraModel(
 
 ## Define precipitating electron flux
 flux = InputFlux(
-    FlatSpectrum(1e-3; E_min=5000),
+    FlatSpectrum(1e-3; E_min=100),
     SinusoidalFlickering(5.0),
-    beams=1,                            # Input is only 1 beam, but result tracks 6 bins???
-    z_source= 6.5 * RE * 1e-3,          # At L-shell 6.5 (Tromsø-ish)
+    beams=1,
+    z_source= 6.5 * (RE * 1e-3),    # [km]
 )
 
 
@@ -65,17 +65,16 @@ sim = AuroraSimulation(
     flux,
     savedir;
     mode=TimeDependentMode(
-        duration=10,
-        dt=0.05,
+        duration=5,
+        dt=0.01,
         CFL_number=256,
         max_memory_gb=4.0,
     )
 )
 
 
-## To 'make' the simulation without recalculating the data
+##
 initialize!(sim)
-
 
 ## Plots for the model
 figs_model = plot_model(model)
