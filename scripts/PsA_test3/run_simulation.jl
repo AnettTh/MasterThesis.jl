@@ -5,26 +5,24 @@ using CairoMakie
 #===========================================================================================
 EVALUATION
 ----------
-Second run uses a greater range of energies, as the previous one was too hard. Also,
-simulating for a shorter period of time (with higher resolution), as the previous test ran
-for too long (nothing of interest, for now, happened after some 2 seconds anyways).
+Lowering the frequency of the modulation, again increasing the time to allow also the low-
+energy electrons precipitate.
 
-Ran for approximately 4 h.
+Ran for approximately 9 h.
 
 Input flux:
 - Spectrum: FlatSpectrum(1e-3; E_min=100)
-- Modulation: SinusoidalFlickering(5.0)
+- Modulation: SinusoidalFlickering(0.5)
 - Beams: 1
-- Source: L-shell 6.5
+- z_source: L-shell 6.5
 
 Time:
-- Duration: 5 s
-- Δt: 0.01 s
+- Duration: 10 s
+- Δt: 0.05 s
 
 Comments:
-- Allows all energies to reach to precipitate, more fruitfull than before.
-- Did not run for long enough for lower energies to precipitate, try again for a longer
-period?
+- Still experimenting with almost field-aligned precipitation, might want to do several
+beams, to get pitch-angle scattering as well?
 
 ===========================================================================================#
 
@@ -78,26 +76,32 @@ model = AuroraModel(
 ## Define precipitating electron flux
 flux = InputFlux(
     FlatSpectrum(1e-3; E_min=100),
-    SinusoidalFlickering(5.0),
+    SinusoidalFlickering(0.5),
     beams=1,
     z_source= 6.5 * (RE * 1e-3),    # [km]
 )
 
 
 ## Create and run the simulation
-savedir = mkpath(joinpath("data", "PsA_test2"))
+savedir = mkpath(joinpath("data", "PsA_test3"))
 
 sim = AuroraSimulation(
     model,
     flux,
     savedir;
     mode=TimeDependentMode(
-        duration=5,
-        dt=0.01,
+        duration=10,
+        dt=0.05,
         CFL_number=256,
         max_memory_gb=4.0,
     )
 )
+
+
+###
+#initialize!(sim)
+#fig_input = plot_input(sim)
+#display(fig_input)
 
 
 ## Run the simulation OR initialize if the simulation already exist
