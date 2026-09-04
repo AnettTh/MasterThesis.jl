@@ -10,7 +10,7 @@ TBW
 """
 function generate_figures(filepath)
 
-    res = load_results(filepath; tidx = 1:21, eidx = 450:937)
+    res = load_results(filepath)#; tidx = 1:10, eidx = 450:937)
     col = load_column_excitation(filepath)
     vol = load_volume_excitation(filepath)
     Iet = load_Ie_top(filepath)
@@ -90,9 +90,9 @@ function generate_figures(filepath)
 
 
     # (beam, time, energy)
-    Ie = Iet.Ietop[1, 1:21, :]
+    Ie = Iet.Ietop[1, 1:11, :]
 
-    t = Iet.t[1:21]
+    t = Iet.t[1:11]
     E = Iet.E_centers
 
     fig = Figure()

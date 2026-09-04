@@ -1,0 +1,9 @@
+altitude_lims_km = [100.0, 596.6507865495595]
+theta_lims = [180.0, 150.0, 120.0, 90.0, 60.0, 30.0, 0.0]
+E_max_eV = 15000.0
+B_angle_to_zenith = 13.0
+mode = "time_dependent"
+duration_s = 0.05
+dt_s = 0.005
+aurora_version = "0.8.0"
+commit_hash = "26f74ea0e862561931450041b7d3ca9e4a5b31ad"
